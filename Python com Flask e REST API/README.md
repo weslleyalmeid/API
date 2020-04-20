@@ -2,11 +2,13 @@
 
 ## Curso [Python com Flask e REST API](https://digitalinnovation.one/)
 
-instalar virtual env
-pip install virtualenv
+**instalar virtual env**
 
-criar virtual eve
-virtualenv [opções] <nome_da_pasta>
+    pip install virtualenv
+
+**criar virtual env**
+    
+    virtualenv [opções] <nome_da_pasta>
 
 **ativar**
 
