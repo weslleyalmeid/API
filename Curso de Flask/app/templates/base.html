@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://v4-alpha.getbootstrap.com/examples/narrow-jumbotron/ -->
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="https://v4-alpha.getbootstrap.com/favicon.ico">
+
+  <title>{% block title %}Toilter{% endblock %}</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/">
+
+  <!-- Bootstrap core CSS -->
+  <link href=" {{ url_for('static', filename= 'css/bootstrap.min.css') }} " rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href=" {{ url_for('static', filename= 'css/narrow-jumbotron.css') }}" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="header clearfix">
+      <nav>
+        <ul class="nav nav-pills float-right">
+          <li class="nav-item">
+            <a class="nav-link active" href="https://v4-alpha.getbootstrap.com/examples/narrow-jumbotron/#">Home <span
+                class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://v4-alpha.getbootstrap.com/examples/narrow-jumbotron/#">About</a>
+          </li>
+          {% if current_user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href= "{{ url_for('logout') }}">Logout</a>
+              </li>
+          {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href= "{{ url_for('login') }}">Login</a>
+              </li>
+          {% endif %}
+        </ul>
+      </nav>
+      <h3 class="text-muted">Project name</h3>
+    </div>
+
+    <div class="alert alert-warning">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+
+    <footer class="footer">
+      <p>© Company 2020</p>
+    </footer>
+
+  </div> <!-- /container -->
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="./base2_files/ie10-viewport-bug-workaround.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src=" {{ url_for('static', filename= "js/bootstrap.min.js") }} "></script>
+
+</body>
+
+</html>
