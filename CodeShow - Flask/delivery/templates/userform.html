@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block top %}
+<section class="hero is-primary">
+<div class="hero-body">
+    <div class="container">
+        <h1>Cadastre-se no melhor site do mundo</h1>
+    </div>
+</div>
+</section>
+{% endblock %}
+
+
+{% block main %}
+<form action='{{ url_for("site.signup") }}' method='post' enctype='multipart/form-data'>
+    
+    <!-- necessário tolen para validar cadastro -->
+    {{ form.csrf_token }}
+    
+    {{ form.email.label }}<br>
+    {{ form.email(size=20) }}<br>
+    
+    {{ form.password.label }}<br>
+    {{ form.password(size=20) }}<br>
+
+
+    {{ form.foto.label }}<br>
+    {{ form.foto }}<br>
+
+    <input type="submit" value="envia ai!!">
+</form>
+
+{% endblock %}
