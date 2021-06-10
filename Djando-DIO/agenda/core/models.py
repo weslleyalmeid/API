@@ -16,6 +16,8 @@ class Evento(models.Model):
     # Se o usuario for deletado, exlcluir todos os eventos e dependentes dele vai ser excluido
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    local = models.CharField(max_length=200, blank=True, null=True)
+    
     # nome da tabela no banco de dados
     class Meta:
         db_table = 'evento'
