@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 class Evento(models.Model):
     # Campo varchar limitado
     titulo = models.CharField(max_length=100)
@@ -17,7 +18,7 @@ class Evento(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
     local = models.CharField(max_length=200, blank=True, null=True)
-    
+
     # nome da tabela no banco de dados
     class Meta:
         db_table = 'evento'
@@ -27,3 +28,6 @@ class Evento(models.Model):
 
     def get_data_evento(self):
         return self.data_evento.strftime('%d/%m/%Y - %H:%M Hrs')
+
+    def get_data_input_evento(self):
+        return self.data_evento.strftime('%Y-%m-%dT%H:%M')

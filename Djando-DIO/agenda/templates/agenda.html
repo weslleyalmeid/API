@@ -26,6 +26,7 @@
         <th>Título</th>
         <th>Data</th>
         <th>Local</th>
+        <th>Editar ou Excluir</th>
     </tr>
 
 
@@ -53,6 +54,10 @@
             *
         </td>
         {% endif %}
+
+        <td>
+            (<a href="evento/?id={{ evento.id }}">Editar</a>  / <a href="evento/delete/{{ evento.id }}/">Excluir</a> )
+        </td>
     </tr>
     {% endfor %}
 
