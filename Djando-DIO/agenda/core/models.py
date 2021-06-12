@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # Create your models here.
 
@@ -36,4 +36,24 @@ class Evento(models.Model):
     def get_evento_atrasado(self):
         if self.data_evento < datetime.now():
             return True
+        return False
+
+    def get_evento_agora(self):
+        import ipdb
+
+        # ipdb.set_trace()
+        if self.data_evento.date() == datetime.now().date():
+
+            hora_evento = self.data_evento.hour
+            minuto_evento = self.data_evento.minute
+            hora_atual = datetime.now().hour
+            minuto_atual = datetime.now().minute
+            # ipdb.set_trace()
+            hora = timedelta(hours=hora_evento, minutes=minuto_evento) - timedelta(hours=hora_atual, minutes=minuto_atual)
+
+            # ipdb.set_trace()
+
+            if hora.seconds < 3600:
+                return True
+        
         return False

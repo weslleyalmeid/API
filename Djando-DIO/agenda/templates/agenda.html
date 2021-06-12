@@ -7,19 +7,11 @@
 <a href="evento/">
     <button type="button">Novo Evento</button>
 </a>
+<a href="evento/historico/" style="padding-left: 10px;">
+    <button type="button">Histórico de agendamento</button>
+</a>
 
 <h3>Bem vindo - {{ request.user }}</h3>
-<!-- <ul style="font-size: 18px;">
-    {% for evento in eventos %}
-
-    {% if evento.local %}
-    <li>{{ evento.titulo }} - {{ evento.get_data_evento }} - {{ evento.local }}</li>
-
-    {% else %}
-    <li>{{ evento.titulo }} - {{ evento.get_data_evento }} - Sem local</li>
-    {% endif %}
-    {% endfor %}
-</ul> -->
 
 <table border="1">
     <tr>
@@ -36,24 +28,24 @@
 
         {% if evento.local %}
 
-        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% elif evento.get_evento_agora %} "color:green" {% endif %}>
             {{ evento.titulo }}
         </td>
-        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% elif evento.get_evento_agora %} "color:green" {% endif %}>
             {{ evento.get_data_evento }}
         </td >
-        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% elif evento.get_evento_agora %} "color:green" {% endif %}>
             {{ evento.local }}
         </td>
 
         {% else %}
-        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% elif evento.get_evento_agora %} "color:yellow" {% endif %}>
             {{ evento.titulo }}
         </td>
-        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% elif evento.get_evento_agora %} "color:yellow" {% endif %}>
             {{ evento.get_data_evento }}
         </td>
-        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% elif evento.get_evento_agora %} "color:yellow" {% endif %}>
             *
         </td>
         {% endif %}
