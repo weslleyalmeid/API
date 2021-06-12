@@ -39,21 +39,21 @@
         <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
             {{ evento.titulo }}
         </td>
-        <td>
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
             {{ evento.get_data_evento }}
-        </td>
-        <td>
+        </td >
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
             {{ evento.local }}
         </td>
 
         {% else %}
-        <td>
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
             {{ evento.titulo }}
         </td>
-        <td>
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
             {{ evento.get_data_evento }}
         </td>
-        <td>
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
             *
         </td>
         {% endif %}
