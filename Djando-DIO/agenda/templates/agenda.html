@@ -4,10 +4,67 @@
 {% block content %}
 <h2>Agendamentos</h2>
 
+<a href="evento/">
+    <button type="button">Novo Evento</button>
+</a>
+
 <h3>Bem vindo - {{ request.user }}</h3>
-<ul style="font-size: 18px;">
+<!-- <ul style="font-size: 18px;">
     {% for evento in eventos %}
-    <li>{{ evento.titulo }} - {{ evento.get_data_evento }}</li>
+
+    {% if evento.local %}
+    <li>{{ evento.titulo }} - {{ evento.get_data_evento }} - {{ evento.local }}</li>
+
+    {% else %}
+    <li>{{ evento.titulo }} - {{ evento.get_data_evento }} - Sem local</li>
+    {% endif %}
     {% endfor %}
-</ul>
+</ul> -->
+
+<table border="1">
+    <tr>
+        <th>Título</th>
+        <th>Data</th>
+        <th>Local</th>
+        <th>Editar ou Excluir</th>
+    </tr>
+
+
+    {% for evento in eventos %}
+
+    <tr align="center">
+
+        {% if evento.local %}
+
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
+            {{ evento.titulo }}
+        </td>
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
+            {{ evento.get_data_evento }}
+        </td >
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
+            {{ evento.local }}
+        </td>
+
+        {% else %}
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
+            {{ evento.titulo }}
+        </td>
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
+            {{ evento.get_data_evento }}
+        </td>
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
+            *
+        </td>
+        {% endif %}
+
+        <td>
+            (<a href="evento/?id={{ evento.id }}">Editar</a> / <a href="evento/delete/{{ evento.id }}/">Excluir</a>
+            )
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
 {% endblock %}
