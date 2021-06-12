@@ -31,9 +31,12 @@
 
 
     {% for evento in eventos %}
+
     <tr align="center">
+
         {% if evento.local %}
-        <td>
+
+        <td style= {% if evento.get_evento_atrasado %} "color:red" {% endif %}>
             {{ evento.titulo }}
         </td>
         <td>
@@ -56,7 +59,8 @@
         {% endif %}
 
         <td>
-            (<a href="evento/?id={{ evento.id }}">Editar</a>  / <a href="evento/delete/{{ evento.id }}/">Excluir</a> )
+            (<a href="evento/?id={{ evento.id }}">Editar</a> / <a href="evento/delete/{{ evento.id }}/">Excluir</a>
+            )
         </td>
     </tr>
     {% endfor %}
