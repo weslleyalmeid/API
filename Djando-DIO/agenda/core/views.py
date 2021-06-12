@@ -40,9 +40,17 @@ def submit_login(request):
 def lista_eventos(request):
     usuario = request.user
     data_atual = datetime.now() - timedelta(hours=1)
-    evento = Evento.objects.filter(usuario=usuario, data_evento__gt=data_atual)
+    evento = Evento.objects.filter(usuario=usuario, data_evento__gt=data_atual).order_by('data_evento')
     dados = {'eventos': evento}
     return render(request, 'agenda.html', dados)
+
+@login_required(login_url='/login/')
+def lista_eventos_old(request):
+    usuario = request.user
+    data_atual = datetime.now() - timedelta(hours=1)
+    evento = Evento.objects.filter(usuario=usuario, data_evento__lt=data_atual).order_by('-data_evento', )
+    dados = {'eventos': evento}
+    return render(request, 'historico.html', dados)
 
 
 @login_required(login_url='/login/')

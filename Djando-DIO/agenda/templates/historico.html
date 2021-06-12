@@ -1,0 +1,52 @@
+{% extends "model-page.html" %}
+
+
+{% block content %}
+<h2>Histórico de Agendamentos</h2>
+
+<h3>Bem vindo - {{ request.user }}</h3>
+
+<table border="1">
+    <tr>
+        <th>Título</th>
+        <th>Data</th>
+        <th>Local</th>
+    </tr>
+
+
+    {% for evento in eventos %}
+
+    <tr align="center">
+
+        {% if evento.local %}
+
+        <td>
+            {{ evento.titulo }}
+        </td>
+        <td>
+            {{ evento.get_data_evento }}
+        </td>
+        <td>
+            {{ evento.local }}
+        </td>
+
+        {% else %}
+        <td>
+            {{ evento.titulo }}
+        </td>
+        <td>
+            {{ evento.get_data_evento }}
+        </td>
+        <td>
+            *
+        </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+
+</table>
+<a href="/">
+    <button type="button">Retornar</button>
+</a>
+
+{% endblock %}
