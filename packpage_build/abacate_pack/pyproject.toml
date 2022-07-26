@@ -1,0 +1,19 @@
+[tool.poetry] # setup.py
+name = "abacate_pack"
+version = "0.1.0"
+description = ""
+authors = ["weslleyalmeid <weslley_fac@hotmail.com>"]
+
+[tool.poetry.dependencies] # requirements.txt
+python = "^3.9"
+httpx = "^0.23.0"
+
+[tool.poetry.dev-dependencies] # requirements-dev.txt
+pytest = "^5.2"
+
+[tool.poetry.scripts] # entry-points do setuptools
+abacate-cli = "abacate_pack.cli:cli"
+
+[build-system] # setuptools
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

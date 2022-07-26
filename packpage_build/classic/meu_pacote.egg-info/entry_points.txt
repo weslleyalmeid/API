@@ -1,0 +1,2 @@
+[console_scripts]
+meu-cli = src.app:cli
